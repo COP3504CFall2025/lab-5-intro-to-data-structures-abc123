@@ -92,16 +92,20 @@ public:
         array_[curr_size_-1] = data;
     }
 
-    T peek() const override{return array_[curr_size_-1];}
+    T peek() const override{
+        if(curr_size_!=0){return array_[curr_size_-1];}
+        throw std::runtime_error("Empty ABS");
+
+}
 
 //if curr_size <= capacity / 4; capacity /= 2;
     T pop() override{
         if(curr_size_==0){
-            throw std::runtime_error("out of bounds");
+            throw std::runtime_error("empty pop");
         }
         T temp_t = array_[curr_size_-1];
         curr_size_--;
-        if(curr_size_<=capacity_/4){
+        if(curr_size_ > 0 && curr_size_<=capacity_/4){
         int newCap = capacity_ / 2;
         T* newArr = new T[newCap];
         for(int i =0; i<curr_size_;i++){

@@ -61,7 +61,7 @@ public:
 		tail = cur;
 		if(head==nullptr)head = cur;
 		count++;
-	}m4
+	}
 
 	// Removal
 	bool removeHead(){

@@ -61,7 +61,7 @@ public:
 		tail = cur;
 		if(head==nullptr)head = cur;
 		count++;
-	}
+	}m4
 
 	// Removal
 	bool removeHead(){
@@ -69,6 +69,7 @@ public:
 		if(count == 1){
 			delete head;
 			head = nullptr;
+			tail = nullptr;
 			count--;
 			return true;
 		}
@@ -85,6 +86,7 @@ public:
 		if(count == 1){
 			delete tail;
 			count--;
+			head = nullptr;
 			tail = nullptr;
 			return true;
 		}

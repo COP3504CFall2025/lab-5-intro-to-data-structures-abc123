@@ -32,18 +32,18 @@ public:
     ABS& operator=(const ABS& rhs){
         if(this==&rhs){return *this;}
         delete[] array_;
-        capacity_ =  other.capacity_;
-        curr_size_ = other.curr_size_;
+        capacity_ =  rhs.capacity_;
+        curr_size_ = rhs.curr_size_;
         array_ = new T[capacity_];
         for(int i =0; i<curr_size_;i++){
-            array_[i] = other.array[i];
+            array_[i] = rhs.array[i];
         }
         return *this;
     }
 
     ABS(ABS&& other) noexcept{
         array_ = other.array_;
-        curr_count_ = other.curr_count_;
+        curr_size_ = other.curr_size_;
         capacity_ = other.capacity_;
         other.array_=nullptr;
         other.curr_count_ =0;
@@ -53,7 +53,7 @@ public:
         if(this==&other){return *this;}
         delete[] array_;
         array_ = other.array_;
-        curr_count_ = other.curr_count_;
+        curr_size_ = other.curr_size_;
         capacity_ = other.capacity_;
         other.array_=nullptr;
         other.curr_count_ =0;
@@ -92,11 +92,11 @@ public:
         array_[curr_size_-1] = data;
     }
 
-    T peek() const override{return array[curr_size_-1];}
+    T peek() const override{return array_[curr_size_-1];}
 
 //if curr_size <= capacity / 4; capacity /= 2;
     T pop() override{
-        if(size==0){
+        if(curr_size_==0){
             throw std::out_of_range("out of bounds");
         }
         T temp_t = array_[curr_size_-1];
@@ -112,7 +112,7 @@ public:
         newArr = nullptr;
         capacity_ = newCap;
         }
-        return temp;
+        return temp_t;
     }
 
 private:

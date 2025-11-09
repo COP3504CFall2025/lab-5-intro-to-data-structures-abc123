@@ -46,7 +46,7 @@ public:
         curr_size_ = other.curr_size_;
         capacity_ = other.capacity_;
         other.array_=nullptr;
-        other.curr_count_ =0;
+        other.curr_size_ =0;
         other.capacity_ =0;
     }
     ABS& operator=(ABS&& other) noexcept{
@@ -56,7 +56,7 @@ public:
         curr_size_ = other.curr_size_;
         capacity_ = other.capacity_;
         other.array_=nullptr;
-        other.curr_count_ =0;
+        other.curr_size_ =0;
         other.capacity_ =0;
         return *this;
     }

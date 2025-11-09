@@ -92,7 +92,7 @@ public:
 		return true;
 	}
 
-	void Clear(){
+	void clear(){
 		while(removeHead()){}
 	}
 
@@ -102,7 +102,7 @@ public:
 		head = other.head;
 		tail = other.tail;
 		count = other.count;
-		other.count = nullptr;
+		other.head = nullptr;
 		other.tail = nullptr;
 		other.count = 0;
 	}
@@ -114,10 +114,15 @@ public:
 		Node* curNode = other.head;
 		while(curNode!=nullptr){
 			temp.addTail(curNode->data);
-		    temp.curNode = curNode->next;
+		    temp.head = curNode->next;
 		}
-		Clear();
-		this = std::move(temp);
+		clear();
+		head = other.head;
+		tail = other.tail;
+		count = other.count;
+		other.head = nullptr;
+		other.tail = nullptr;
+		other.count = 0;
 	}
 
 	// Construction/Destruction
@@ -129,11 +134,11 @@ public:
 	}
 
 	LinkedList(const LinkedList<T>& list){
-		LinkedList temp = LinkedList();
+		LinkedList();
 		Node* curNode = list.head;
 		while(curNode!=nullptr){
-			temp.addTail(curNode->data);
-		    temp.curNode = curNode->next;
+			addTail(curNode->data);
+		    tail = curNode->next;
 		}
 
 	}

@@ -107,8 +107,9 @@ public:
         T temp_t = array_[curr_size_-1];
         curr_size_--;
         if(curr_size_ > 0 && curr_size_<=capacity_/4){
-        int newCap = capacity_ / 2;
-        if(newCap==2){newCap=1;}
+        int newCap;
+        if(capacity_==2){newCap=1;}
+        else{newCap = capacity_ / 2;}
         T* newArr = new T[newCap];
         for(int i =0; i<curr_size_;i++){
             newArr[i] = array_[i];

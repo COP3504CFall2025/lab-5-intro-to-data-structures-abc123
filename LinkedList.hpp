@@ -50,14 +50,16 @@ public:
 	// Insertion
 	void addHead(const T& data){
 		Node* cur = new Node{data, nullptr, head};
-		head->prev = cur;
+		if(head!=nullptr)head->prev = cur;
 		head = cur;
+		if(tail==nullptr) tail = cur;
 		count++;
 	}
 	void addTail(const T& data){
 		Node* cur = new Node{data, tail, nullptr};
-		tail->next = cur;
+		if(tail!=nullptr)tail->next = cur;
 		tail = cur;
+		if(head==nullptr)head = cur;
 		count++;
 	}
 
@@ -117,7 +119,7 @@ public:
 		Node* curNode = other.head;
 		while(curNode!=nullptr){
 			temp.addTail(curNode->data);
-		    temp.head = curNode->next;
+		    curNode = curNode->next;
 		}
 		clear();
 		head = temp.head;
@@ -140,11 +142,14 @@ public:
 	}
 
 	LinkedList(const LinkedList<T>& list){
-		LinkedList();
+		Node* node = nullptr;
+		count = 0;
+		head = node;
+		tail = node;
 		Node* curNode = list.head;
 		while(curNode!=nullptr){
 			addTail(curNode->data);
-		    tail = curNode->next;
+		    curNode = curNode->next;
 		}
 
 	}

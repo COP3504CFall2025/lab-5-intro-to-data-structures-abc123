@@ -66,8 +66,9 @@ public:
 		if(head == nullptr){return false;}
 		if(count == 1){
 			delete head;
+			head = nullptr;
 			count--;
-			return false;
+			return true;
 		}
 		Node* head_x = head;
 		head = head->next;
@@ -82,7 +83,8 @@ public:
 		if(count == 1){
 			delete tail;
 			count--;
-			return false;
+			tail = nullptr;
+			return true;
 		}
 		Node* tail_x = tail;
 		tail = tail->prev;

@@ -14,19 +14,20 @@ public:
     ABS(){
         capacity_ =1;
         curr_size_ = 0;
-        array_=nullptr;
+        array_=new T[1];
     }
     explicit ABS(const size_t capacity){
         capacity_ =  capacity;
+        if(capacity_==0)capacity_=1;
         curr_size_ = 0;
         array_ = new T[capacity_];
     }
     ABS(const ABS& other){
-        capacity_ =  other.capacity;
+        capacity_ =  other.capacity_;
         curr_size_ = other.curr_size_;
         array_ = new T[capacity_];
         for(int i =0; i<curr_size_;i++){
-            array_[i] = other.array[i];
+            array_[i] = other.array_[i];
         }
     }
     ABS& operator=(const ABS& rhs){
@@ -36,7 +37,7 @@ public:
         curr_size_ = rhs.curr_size_;
         array_ = new T[capacity_];
         for(int i =0; i<curr_size_;i++){
-            array_[i] = rhs.array[i];
+            array_[i] = rhs.arrayz_[i];
         }
         return *this;
     }

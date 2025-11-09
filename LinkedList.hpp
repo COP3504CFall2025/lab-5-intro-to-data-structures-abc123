@@ -98,19 +98,19 @@ public:
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept{
-		if(this == &other ){return this;}
+		if(this == &other ){return other;}
 		head = other.head;
 		tail = other.tail;
 		count = other.count;
 		other.head = nullptr;
 		other.tail = nullptr;
 		other.count = 0;
-		return this;
+		return other;
 	}
 //1=1
 //do not clear untill full copy
 	LinkedList<T>& operator=(const LinkedList<T>& other){
-		if(this == &other ){return this;}
+		if(this == &other ){return other;}
 		LinkedList temp = LinkedList();
 		Node* curNode = other.head;
 		while(curNode!=nullptr){

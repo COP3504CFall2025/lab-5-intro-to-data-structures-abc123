@@ -97,7 +97,7 @@ public:
 //if curr_size <= capacity / 4; capacity /= 2;
     T pop() override{
         if(curr_size_==0){
-            throw std::out_of_range("out of bounds");
+            throw std::runtime_error("out of bounds");
         }
         T temp_t = array_[curr_size_-1];
         curr_size_--;

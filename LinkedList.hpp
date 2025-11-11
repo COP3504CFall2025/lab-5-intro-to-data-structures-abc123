@@ -117,20 +117,13 @@ public:
 //do not clear untill full copy
 	LinkedList<T>& operator=(const LinkedList<T>& other){
 		if(this == &other ){return *this;}
-		LinkedList temp = LinkedList();
+        clear();
 		Node* curNode = other.head;
 		while(curNode!=nullptr){
-			temp.addTail(curNode->data);
+			addTail(curNode->data);
 		    curNode = curNode->next;
 		}
-        std::swap(head, temp.head);
-        std::swap(tail, temp.tail);
-        std::swap(count, temp.count);
-
-
 		return *this;
-
-
 	}
 
 	// Construction/Destruction

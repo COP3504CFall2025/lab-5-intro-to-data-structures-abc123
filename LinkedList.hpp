@@ -123,13 +123,11 @@ public:
 			temp.addTail(curNode->data);
 		    curNode = curNode->next;
 		}
-		clear();
-		head = temp.head;
-		tail = temp.tail;
-		count = temp.count;
-		temp.head = nullptr;
-		temp.tail = nullptr;
-		temp.count = 0;
+        std::swap(head, temp.head);
+        std::swap(tail, temp.tail);
+        std::swap(count, temp.count);
+
+
 		return *this;
 
 

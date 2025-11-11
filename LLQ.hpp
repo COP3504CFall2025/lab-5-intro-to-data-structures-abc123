@@ -22,7 +22,7 @@ public:
 
     // Deletion
     T dequeue() override{
-        if(list.getCount()==0){throw std::runtime_error("empty pop");}
+        if(list.getCount()==0){throw std::runtime_error("empty dequeu");}
         T temp = list.getHead()->data;
         list.removeHead();
         return temp;
@@ -30,7 +30,8 @@ public:
 
     // Access
     T peek() const override{
-        return list.getHead();
+        if(list.getCount()==0){throw std::runtime_error("empty peek");}
+        return list.getHead()->data;
     }
 
     // Getter

@@ -83,10 +83,12 @@ public:
 
     // Push item onto the stack
     void enqueue(const T& data) override{
+        /*
         if(capacity_ == 0){
             capacity_ = 1;
             array_ = new T[capacity_];
-        }
+        }*/
+
         if(curr_size_ == capacity_){
             T* temp = new T[capacity_*scale_factor_];
             for(int i =0; i<curr_size_; i++){temp[i]=array_[i];}

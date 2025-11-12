@@ -65,6 +65,8 @@ public:
         delete[] data;
         capacity =  other.capacity;
         size = other.size;
+        front_ = other.front_;
+        back_ =other.back_;
         data= new T[capacity];
         for(int i =0; i<capacity;i++){
             data[i] = other.data[i];
@@ -74,6 +76,7 @@ public:
     }
     ABDQ& operator=(ABDQ&& other) noexcept{
         if(this==&other){return *this;}
+        delete[] data;
         capacity = other.capacity;
         size =other.size;
         front_ =other.front_;
@@ -136,7 +139,7 @@ public:
     //implemet push back_
     back_ = (back_ + 1) % capacity;
     data[back_] = item;
-    capacity++;
+    size++;
     }
 
     // Deletion
@@ -164,8 +167,12 @@ public:
     }
 
     // Access
-    const T& front() const override{return data[front_];}
-    const T& back() const override{return data[back_];}
+    const T& front() const override{
+    if(size==0){throw std::runtime_error("empty front");}
+    return data[front_];}
+    const T& back() const override{
+    if(size==0){throw std::runtime_error("empty back");}
+    return data[back_];}
 
     // Getters
     std::size_t getSize() const noexcept override{return size;}

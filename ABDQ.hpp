@@ -62,7 +62,9 @@ public:
 
     ABDQ& operator=(const ABDQ& other){
         if(this==&other){return *this;}
+
         delete[] data;
+
         capacity =  other.capacity;
         size = other.size;
         front_ = other.front_;
@@ -76,7 +78,9 @@ public:
     }
     ABDQ& operator=(ABDQ&& other) noexcept{
         if(this==&other){return *this;}
+
         delete[] data;
+
         capacity = other.capacity;
         size =other.size;
         front_ =other.front_;

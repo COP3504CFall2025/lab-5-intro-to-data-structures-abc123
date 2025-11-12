@@ -30,7 +30,7 @@ public:
         data = new T[capacity];
         size =0;
         front_ =0;
-        back_=0;
+        back_=capacity-1;
     }
 
     ABDQ(const ABDQ& other){
@@ -109,6 +109,13 @@ public:
         size =1;
         return;
     }
+        if(size == 0){
+        data[front_] = item;
+        back_=front_;
+        size++;
+        return;
+    }
+
         if(size == capacity){
             T* temp = new T[capacity*SCALE_FACTOR];
             for(int i =0; i<capacity; i++){temp[i]=data[i];}
@@ -130,6 +137,12 @@ public:
         back_ =0;
         data[0] =item;
         size =1;
+        return;
+    }
+        if(size == 0){
+        data[front_] = item;
+        back_=front_;
+        size++;
         return;
     }
         if(size == capacity){
